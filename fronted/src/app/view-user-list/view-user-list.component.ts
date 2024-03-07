@@ -11,6 +11,7 @@ import { ApiserviceService } from '../apiservice.service';
 export class ViewUserListComponent {
   apiResponse: any;
   
+  
  
   
   constructor(private http: HttpClient, private apiserviceService:ApiserviceService, private router:Router) {}
@@ -26,10 +27,14 @@ export class ViewUserListComponent {
 
   deleteUser(userId: string): void {
     this.apiserviceService.deleteUser(userId).subscribe(
-      () => {
+      () => {      
         console.log('User deleted successfully');
         alert("User deleted successfully")
-        this.apiserviceService.getuser();
+        //this.apiserviceService.getuser();
+        this.apiserviceService.getuser().subscribe((response: any) => {
+          this.apiResponse = response;  
+        });
+        
       },
       (error:any) => {
         console.error('Error deleting user:', error);
