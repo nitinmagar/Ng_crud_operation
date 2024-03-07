@@ -1,0 +1,26 @@
+<h2 style="background-color: red; border-radius: 5px; color: white;text-align: center; ">View User List</h2>
+<table class="table">
+   
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of apiResponse">
+        <td>{{ item.id }}</td>
+        <td>{{ item.firstName }}</td>
+        <td>{{ item.lastName }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.address }}</td>
+        <td><button class="btn btn-danger" (click)="deleteUser(item._id)">Delete</button> 
+        <button class="btn btn-success" (click)="updateUser(item._id)">Update</button></td>
+      </tr>
+    </tbody>
+  </table>
+  

@@ -1,0 +1,34 @@
+<form [formGroup]="userForm" (ngSubmit)="submitForm()" class="form-container">
+    <h2 style="background-color: red; border-radius: 5px; color: white;text-align: center; ">Add User</h2>
+    <div class="form-group">
+      <label for="id">ID:</label>
+      <input type="text" id="id" name="id"  class="form-control" formControlName="id" (keypress)="numericOnly($event)">
+    </div>
+
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName"  class="form-control" formControlName="firstName" (keypress)="alphaOnly($event)">
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" class="form-control" formControlName="lastName" (keypress)="alphaOnly($event)">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" class="form-control" formControlName="email">
+      <div *ngIf="userForm.get('email')?.invalid && (userForm.get('email')?.dirty || userForm.get('email')?.touched)">
+        <div *ngIf="userForm.get('email')?.errors" style="color: red;">Email is required</div>
+        <div *ngIf="userForm.get('email')?.errors" style="color: red;">Invalid email format</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <textarea id="address" name="address" class="form-control" formControlName="address"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    
+  </form>
+  
